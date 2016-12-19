@@ -1,37 +1,75 @@
-## Welcome to GitHub Pages
+## Mango
 
-You can use the [editor on GitHub](https://github.com/laminko/mango/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+A Simple wrapper module for Mongo sit on top of PyMongo.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
+### Installation
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+To install `mango` lib: `pip install mango`.
 
-```markdown
-Syntax highlighted code block
 
-# Header 1
-## Header 2
-### Header 3
+### Usage
 
-- Bulleted
-- List
+#### `init_db`
 
-1. Numbered
-2. List
+To initialize MongoDb Connection.
 
-**Bold** and _Italic_ and `Code` text
+Parameter:
+`uri`: MongoDb URI
 
-[Link](url) and ![Image](src)
-```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+#### `get_table`
 
-### Jekyll Themes
+Get the MongoDb Table object.
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/laminko/mango/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+Parameter:
+`table_name`: Table name
 
-### Support or Contact
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+#### `select`
+
+Query record(s) from table.
+
+Parameters:
+`table_name`: Table name
+`_filter`: MongoDb filter object
+`is_many`: Use `find` or `find_one`. Default is `False` which means `find_one` will be used.
+`**kwargs`: `KwArgs` which will be pass to pymongo function
+
+
+#### `insert`
+
+Insert record(s) to table.
+
+Parameters:
+`table_name`: Table name
+`_value`: Value that will be inserted
+`is_many`: `insert_one` or `insert_many`. Default is `False` (means
+`insert_one`).
+`**kwargs`: `KwArgs` will be pass to pymongo function
+
+
+#### `update`
+
+Update record(s) to table.
+
+Parameters:
+`table_name`: Table name
+`_filter`: MongoDb filter object
+`_value`: Value that will be updated
+`is_many`: `update_one` or `update_many`. Default is `False` (means
+`update_one`).
+`_operation`: MongoDb update operation. Default is `$set`.
+`**kwargs`: `KwArgs` will be pass to pymongo function.
+
+
+#### `delete`
+
+Delete record(s) to table.
+
+Parameters:
+`table_name`: Table name
+`_filter`: MongoDb filter object
+`is_many`: `delete_one` or `delete_many`. Default is `False` (means
+`delete_one`).
+`**kwargs`: `KwArgs` will be pass to pymongo function.

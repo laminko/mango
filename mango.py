@@ -25,7 +25,7 @@ except:
 def init_db(uri=None):
     global mgdb
     """
-    Initialize mongo db object according to appconfig.ini.
+    Initialize MongoDb Connection using PyMongo.
     """
     if IS_W2P_IMPORT:
         appconfig = AppConfig()
