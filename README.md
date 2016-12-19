@@ -42,7 +42,7 @@ rows = mango.select('mytable', { "qty": { "$gt": 4 } })
 - [`delete`](#delete)
 
 
-#### init_db
+### init_db
 
 To initialize MongoDb Connection.
 
@@ -51,7 +51,7 @@ Parameter:
 `uri`: MongoDb URI
 
 
-#### get_table
+### get_table
 
 Get the MongoDb Table object.
 
@@ -60,7 +60,7 @@ Parameter:
 - `table_name`: Table name
 
 
-#### select
+### select
 
 Query record(s) from table.
 
@@ -72,7 +72,7 @@ Parameters:
 - `**kwargs`: `KwArgs` which will be pass to pymongo function
 
 
-#### insert
+### insert
 
 Insert record(s) to table.
 
@@ -83,7 +83,7 @@ Parameters:
 - `**kwargs`: `KwArgs` will be pass to pymongo function
 
 
-#### update
+### update
 
 Update record(s) to table.
 
@@ -97,7 +97,7 @@ Parameters:
 - `**kwargs`: `KwArgs` will be pass to pymongo function.
 
 
-#### delete
+### delete
 
 Delete record(s) to table.
 
