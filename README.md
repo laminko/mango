@@ -1,24 +1,45 @@
-## Mango
+# Mango
 
 A Simple wrapper module for Mongo sit on top of PyMongo.
 
 
-### Installation
+
+## Installation
 
 To install `mango` lib: `pip install mango`.
 
 
-### Usage
 
+## Usage
+
+To import module: `import mango`.
+
+Sample:
+```python
+import mango
+
+uri = "mongodb://user:pwd@localhost:port/database"
+mango.init_db(uri)
+
+# To get database object
+db = mango.mgdb
+
+# To get table object
+mytable = mango.get_table('mytable')
+
+# Select rows
+rows = mango.select('mytable')
+rows = mango.select('mytable', { "qty": { "$gt": 4 } })
+```
 
 ### Availabe functions
 
--[`init_db`](#init_db)
--[`get_table`](#get_table)
--[`select`](#select)
--[`insert`](#insert)
--[`update`](#update)
--[`delete`](#delete)
+- [`init_db`](#init_db)
+- [`get_table`](#get_table)
+- [`select`](#select)
+- [`insert`](#insert)
+- [`update`](#update)
+- [`delete`](#delete)
 
 
 #### init_db
