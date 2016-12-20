@@ -8,7 +8,7 @@ license: MIT
 """
 
 
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 IS_W2P_IMPORT = True
 mgdb = None
 
