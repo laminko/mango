@@ -15,6 +15,7 @@ To install `mango` lib: `pip install python-mango`.
 To import module: `import mango`.
 
 Sample:
+
 ```python
 import mango
 
