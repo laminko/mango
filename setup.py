@@ -15,7 +15,7 @@ with open(path.join(current_path, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
 
-setup_info = dict(name='mango',
+setup_info = dict(name='python-mango',
                   version=__version__,
                   description='Mango: simple MongoDb wrapper',
                   long_description=long_description,

@@ -15,6 +15,10 @@ To import module: ``import mango``.
 
 Sample:
 
+.. raw:: html
+
+   <div class="sourceCode">
+
 .. code:: python
 
     import mango
@@ -32,15 +36,19 @@ Sample:
     rows = mango.select('mytable')
     rows = mango.select('mytable', { "qty": { "$gt": 4 } })
 
+.. raw:: html
+
+   </div>
+
 Availabe functions
 ------------------
 
--  ```init_db```_
--  ```get_table```_
--  ```select```_
--  ```insert```_
--  ```update```_
--  ```delete```_
+-  `init_db`_
+-  `get_table`_
+-  `select`_
+-  `insert`_
+-  `update`_
+-  `delete`_
 
 init\_db
 --------
@@ -78,13 +86,10 @@ insert
 
 Insert record(s) to table.
 
-Parameters:
-
--  ``table_name``: Table name
--  ``_value``: Value that will be inserted
--  ``is_many``: ``insert_one`` or ``insert_many``. Default is ``False``
-   (means ``insert_one``).
--  ``**kwargs``: ``KwArgs`` will be pass to pymongo function
+Parameters: - ``table_name``: Table name - ``_value``: Value that will
+be inserted - ``is_many``: ``insert_one`` or ``insert_many``. Default is
+``False`` (means ``insert_one``). - ``**kwargs``: ``KwArgs`` will be
+pass to pymongo function
 
 update
 ------
