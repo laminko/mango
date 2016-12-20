@@ -6,7 +6,7 @@ A Simple wrapper module for Mongo sit on top of PyMongo.
 Installation
 ------------
 
-To install ``mango`` lib: ``pip install mango``.
+To install ``mango`` lib: ``pip install python-mango``.
 
 Usage
 -----
@@ -17,7 +17,6 @@ Sample:
 
 .. raw:: html
 
-   <div class="sourceCode">
 
 .. code:: python
 
@@ -38,7 +37,6 @@ Sample:
 
 .. raw:: html
 
-   </div>
 
 Availabe functions
 ------------------

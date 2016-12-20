@@ -6,7 +6,7 @@ A Simple wrapper module for Mongo sit on top of PyMongo.
 
 ## Installation
 
-To install `mango` lib: `pip install mango`.
+To install `mango` lib: `pip install python-mango`.
 
 
 
