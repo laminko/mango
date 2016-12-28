@@ -8,7 +8,7 @@ license: MIT
 """
 
 
-__version__ = "0.1.3"
+__version__ = "0.1.4"
 IS_W2P_IMPORT = True
 mgdb = None
 
@@ -32,7 +32,9 @@ def to_w2p_id(records, to_web2py_id=False):
         for k, v in row.items():
             if type(v) == ObjectId:
                 stringified = str(v)
-                k = "id" if k == "_id" else k
+                if k == "_id":
+                    row.pop(k)
+                    k = "id"
                 row[k] = long(stringified, 16)
         return row
     if not isinstance(records, collections.Iterable):
