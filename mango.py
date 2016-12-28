@@ -14,12 +14,34 @@ mgdb = None
 
 
 import pymongo
+import collections
+from bson.objectid import ObjectId
 
 
 try:
     from gluon.contrib.appconfig import AppConfig
 except:
     IS_W2P_IMPORT = False
+
+
+def to_w2p_id(records, to_web2py_id=False):
+    """
+    Covert MongoDB ObjectID to Web2py compatible ID.
+    """
+    def converter(row):
+        for k, v in row.items():
+            if type(v) == ObjectId:
+                stringified = str(v)
+                k = "id" if k == "_id" else k
+                row[k] = long(stringified, 16)
+        return row
+    if not isinstance(records, collections.Iterable):
+        raise ValueError("Records must be Iterable.")
+    if to_web2py_id:
+        if isinstance(records, dict):
+            return converter(records)
+        return map(converter, records)
+    return records
 
 
 def init_db(uri=None):
@@ -50,18 +72,29 @@ def get_table(table_name):
     return mgdb[table_name]
 
 
+def count(table_name,
+        _filter=None,
+        **kwargs):
+    """
+    MongoDb count wrapper function.
+    """
+    _table = get_table(table_name)
+    return _table.count(_filter, **kwargs)
+
+
 def select(table_name,
         _filter=None,
         is_many=False,
+        to_web2py_id=False,
         **kwargs):
     """
     MongoDb find wrapper function.
     """
-    _table = mgdb[table_name]
+    _table = get_table(table_name)
     if not is_many:
-        return _table.find_one(_filter, **kwargs)
+        return to_w2p_id(_table.find_one(_filter, **kwargs), to_web2py_id)
     else:
-        return _table.find(_filter, **kwargs)
+        return to_w2p_id(_table.find(_filter, **kwargs), to_web2py_id)
 
 
 def delete(table_name,
@@ -71,7 +104,7 @@ def delete(table_name,
     """
     MongoDb delete wrapper function.
     """
-    _table = mgdb[table_name]
+    _table = get_table(table_name)
     if not is_many:
         return _table.delete_one(
             _filter,
@@ -91,7 +124,7 @@ def update(table_name,
     """
     MongoDb update wrapper function.
     """
-    _table = mgdb[table_name]
+    _table = get_table(table_name)
     if _filter and _value:
         _update = {
             _operation: _value
@@ -117,7 +150,7 @@ def insert(table_name,
     """
     MongoDb insert wrapper function.
     """
-    _table = mgdb[table_name]
+    _table = get_table(table_name)
     if not is_many:
         return _table.insert(_value, **kwargs)
     else:

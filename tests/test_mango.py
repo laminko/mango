@@ -2,6 +2,10 @@ import sys
 import os
 
 
+"""
+Mango Tester Script.
+"""
+
 current_path = os.path.dirname(
         os.path.dirname(
             os.path.abspath(__file__))
@@ -13,7 +17,20 @@ sys.path.append(current_path)
 import mango
 
 
-uri = "mongodb://user:pwd@localhost:27017/tests"
+uri_obj = dict()
+
+if len(sys.argv) < 5:
+    print "python test_mango.py user pwd dbname [port|d] [host|d]"
+    print "NOTE: d = use default value"
+    raise ValueError("Incorrect parameters")
+
+args = sys.argv
+if args[-2] == "d":
+    args[-2] = "27017"
+if args[-1] == "d":
+    args[-1] = "localhost"
+
+uri = "mongodb://{1}:{2}@{5}:{4}/{3}".format(*args)
 print mango.init_db(uri)
 
 
@@ -49,12 +66,34 @@ print mango.select(
     dict(status=True))
 
 
+print "select, is_many=False, to_web2py_id=True"
+print mango.select(
+    "tests",
+    dict(status=True),
+    to_web2py_id=True)
+
+
 print "select, is_many=True"
 for each in mango.select(
     "tests",
     dict(status=True),
     is_many=True):
     print each
+print
+
+
+print "select, is_many=True, to_web2py_id=True"
+for each in mango.select(
+    "tests",
+    dict(status=True),
+    is_many=True,
+    to_web2py_id=True):
+    print each
+print
+
+
+print "count"
+print mango.count('tests', dict(status=True))
 print
 
 
