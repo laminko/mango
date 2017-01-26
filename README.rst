@@ -117,9 +117,9 @@ Parameters:
    (means ``delete_one``).
 -  ``**kwargs``: ``KwArgs`` will be pass to pymongo function.
 
-.. _``init_db``: #init_db
-.. _``get_table``: #get_table
-.. _``select``: #select
-.. _``insert``: #insert
-.. _``update``: #update
-.. _``delete``: #delete
+.. _init_db: #init_db
+.. _get_table: #get_table
+.. _select: #select
+.. _insert: #insert
+.. _update: #update
+.. _delete: #delete
