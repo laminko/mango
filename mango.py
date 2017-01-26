@@ -128,9 +128,12 @@ def update(table_name,
     """
     _table = get_table(table_name)
     if _filter and _value:
-        _update = {
-            _operation: _value
-        }
+        if _operation:
+            _update = {
+                _operation: _value
+            }
+        else:
+            _update = _value
         if not is_many:
             return _table.update_one(
                 _filter,
