@@ -31,6 +31,30 @@ mytable = mango.get_table('mytable')
 # Select rows
 rows = mango.select('mytable')
 rows = mango.select('mytable', { "qty": { "$gt": 4 } })
+
+# Insert
+mango.insert('mytable', dict(name='Aung Aung'))
+
+# Update
+_filter = dict(id=1234)
+_value = dict(mark=80)
+mango.update('mytable', _filter, _value)
+
+_value = {
+    "$set": {
+        "name": "Tun Aung"
+    },
+    "$push": {
+        "marks": {
+            "english": 60
+        }
+    }
+}
+mango.update('mytable', _filter, _value)
+
+# Delete
+_filter = dict(id=456)
+mango.delete('mytable', _filter)
 ```
 
 ## Availabe functions

@@ -8,7 +8,7 @@ license: MIT
 """
 
 
-__version__ = "0.1.5"
+__version__ = "0.1.6"
 IS_W2P_IMPORT = True
 mgdb = None
 
@@ -127,13 +127,14 @@ def update(table_name,
     MongoDb update wrapper function.
     """
     _table = get_table(table_name)
+    _has_operators = any([k.startswith("$") for k in _value.keys()])
     if _filter and _value:
-        if _operation:
+        if _has_operators:
+            _update = _value
+        else:
             _update = {
                 _operation: _value
             }
-        else:
-            _update = _value
         if not is_many:
             return _table.update_one(
                 _filter,

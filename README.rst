@@ -15,9 +15,6 @@ To import module: ``import mango``.
 
 Sample:
 
-.. raw:: html
-
-
 .. code:: python
 
     import mango
@@ -35,8 +32,29 @@ Sample:
     rows = mango.select('mytable')
     rows = mango.select('mytable', { "qty": { "$gt": 4 } })
 
-.. raw:: html
+    # Insert
+    mango.insert('mytable', dict(name='Aung Aung'))
 
+    # Update
+    _filter = dict(id=1234)
+    _value = dict(mark=80)
+    mango.update('mytable', _filter, _value)
+
+    _value = {
+        "$set": {
+            "name": "Tun Aung"
+        },
+        "$push": {
+            "marks": {
+                "english": 60
+            }
+        }
+    }
+    mango.update('mytable', _filter, _value)
+
+    # Delete
+    _filter = dict(id=456)
+    mango.delete('mytable', _filter)
 
 Availabe functions
 ------------------
@@ -117,9 +135,9 @@ Parameters:
    (means ``delete_one``).
 -  ``**kwargs``: ``KwArgs`` will be pass to pymongo function.
 
-.. _init_db: #init_db
-.. _get_table: #get_table
-.. _select: #select
-.. _insert: #insert
-.. _update: #update
-.. _delete: #delete
+.. _`init_db`: #init_db
+.. _`get_table`: #get_table
+.. _`select`: #select
+.. _`insert`: #insert
+.. _`update`: #update
+.. _`delete`: #delete
