@@ -102,10 +102,12 @@ insert
 
 Insert record(s) to table.
 
-Parameters: - ``table_name``: Table name - ``_value``: Value that will
-be inserted - ``is_many``: ``insert_one`` or ``insert_many``. Default is
-``False`` (means ``insert_one``). - ``**kwargs``: ``KwArgs`` will be
-pass to pymongo function
+Parameters:
+
+- ``table_name``: Table name 
+- ``_value``: Value that will be inserted
+- ``is_many``: ``insert_one`` or ``insert_many``. Default is ``False`` (means ``insert_one``).
+- ``**kwargs``: ``KwArgs`` will be pass to pymongo function
 
 update
 ------
