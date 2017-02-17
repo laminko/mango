@@ -158,6 +158,6 @@ def insert(table_name,
     """
     _table = get_table(table_name)
     if not is_many:
-        return _table.insert(_value, **kwargs)
+        return _table.insert_one(_value, **kwargs)
     else:
         return _table.insert_many(_value, **kwargs)
