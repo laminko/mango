@@ -108,3 +108,7 @@ Parameters:
 - `_filter`: MongoDb filter object
 - `is_many`: `delete_one` or `delete_many`. Default is `False` (means `delete_one`).
 - `**kwargs`: `KwArgs` will be pass to pymongo function.
+
+# Credits
+
+Icon made by Freepik from www.flaticon.com
